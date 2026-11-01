@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Aangan Interiors – interior design studio in Mumbai. Free consultation on WhatsApp.">
+<title>Aangan Interiors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one long scroll — sliding hero "showroom", then services, process, estimator, work, voices, FAQ, consult. Light-only by design. */
+:root{
+  --chalk:#F5F6F2;      /* page ground, faint sage bias */
+  --paper:#FFFFFF;
+  --linen:#ECEAE3;      /* soft panels */
+  --ink:#1E2824;        /* text, deep olive-black */
+  --muted:#5D6A64;
+  --sage:#7E9A8B;       /* primary accent */
+  --sage-deep:#4F6B5E;
+  --oak:#C2925F;        /* warm wood highlight */
+  --blush:#EBDCD2;
+  --line:#DADDD5;
+  --wa:#1FA855;
+  --f-display:"Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --f-body:"Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r:18px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+img{max-width:100%}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--chalk);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--chalk)}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;line-height:1.05;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--sage-deep);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sage-deep)}
+.section{padding-block:88px}
+.sec-head{display:grid;gap:14px;max-width:640px;margin-bottom:44px}
+.sec-head h2{font-size:clamp(36px,5vw,58px)}
+.sec-head p{color:var(--muted);max-width:56ch}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;border:0;cursor:pointer;font-weight:600;text-decoration:none;transition:transform .25s ease,box-shadow .25s ease,background .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-ink:hover{box-shadow:0 12px 28px -12px rgba(30,40,36,.6)}
+.btn-ghost{background:transparent;border:1.5px solid var(--ink);color:var(--ink)}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-wa:hover{box-shadow:0 12px 28px -10px rgba(31,168,85,.6)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(245,246,242,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+.nav.scrolled{border-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-size:26px;text-decoration:none}
+.logo-mark{width:30px;height:30px;border-radius:50% 50% 4px 50%;background:linear-gradient(135deg,var(--sage),var(--oak));animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.links{display:flex;gap:26px;font-size:14px;font-weight:500}
+.links a{text-decoration:none;position:relative}
+.links a::after{content:"";position:absolute;left:0;bottom:-4px;height:1.5px;width:100%;background:var(--oak);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.links a:hover::after{transform:scaleX(1)}
+.menu-btn{display:none;background:none;border:1.5px solid var(--line);border-radius:12px;padding:8px 12px;cursor:pointer}
+@media (max-width:860px){
+  .links{display:none}
+  .links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--paper);padding:20px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--line);gap:16px;font-size:17px}
+  .menu-btn{display:inline-flex}
+  .nav-cta{display:none!important}
+}
+
+/* hero */
+.hero{padding-block:36px 72px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:44px;align-items:center}
+.hero h1{font-size:clamp(46px,7vw,92px)}
+.hero h1 em{color:var(--sage-deep)}
+.hero-copy{display:grid;gap:22px;min-width:0}
+.hero-copy > p{color:var(--muted);font-size:18px;max-width:44ch}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:13px;padding:6px 12px;border-radius:999px;background:var(--paper);border:1px solid var(--line)}
+.rise{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.rise.d1{animation-delay:.08s}.rise.d2{animation-delay:.16s}.rise.d3{animation-delay:.24s}.rise.d4{animation-delay:.32s}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@media (max-width:900px){.hero-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* slider */
+.slider{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/3;max-width:100%;background:var(--linen);box-shadow:0 40px 80px -40px rgba(30,40,36,.45)}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .9s ease}
+.slide.on{opacity:1}
+.slide > svg,.slide > img{width:100%;height:100%;object-fit:cover;display:block}
+.slide.on > svg,.slide.on > img{animation:kb 7s ease-out both}
+@keyframes kb{from{transform:scale(1.08)}to{transform:scale(1)}}
+.cap{position:absolute;left:18px;bottom:18px;right:18px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.cap-card{background:rgba(255,255,255,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:12px 16px;border-radius:14px;max-width:70%}
+.cap-card b{display:block;font-family:var(--f-display);font-weight:400;font-size:22px;line-height:1.1}
+.cap-card span{font-size:13px;color:var(--muted)}
+.ctrls{display:flex;gap:8px}
+.round{width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.9);cursor:pointer;display:grid;place-items:center;font-size:18px;transition:transform .2s}
+.round:hover{transform:scale(1.08)}
+.dots{position:absolute;top:16px;left:18px;display:flex;gap:6px}
+.dot{width:22px;height:4px;border-radius:4px;border:0;background:rgba(255,255,255,.55);cursor:pointer;padding:0;overflow:hidden;position:relative}
+.dot.on::after{content:"";position:absolute;inset:0;background:#fff;transform-origin:left;animation:fill 5.5s linear both}
+.slider.paused .dot.on::after{animation:none;transform:scaleX(1)}
+@keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.add-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px;font-size:14px;color:var(--muted)}
+.add-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;border:1.5px dashed var(--sage);background:var(--paper);color:var(--sage-deep);font-weight:600;cursor:pointer}
+.add-btn input{display:none}
+.remove{position:absolute;top:12px;right:14px;border:0;background:rgba(255,255,255,.9);border-radius:999px;padding:6px 12px;font-size:12px;font-weight:600;cursor:pointer}
+
+/* marquee */
+.marquee{border-block:1px solid var(--line);overflow:hidden;background:var(--paper)}
+.mq-track{display:flex;gap:48px;padding-block:18px;width:max-content;animation:mq 38s linear infinite;font-family:var(--f-display);font-size:28px;color:var(--muted)}
+.mq-track span{display:flex;align-items:center;gap:48px;white-space:nowrap}
+.mq-track span::after{content:"✦";font-size:14px;color:var(--oak)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;padding-block:56px}
+.stat b{display:block;font-family:var(--f-display);font-weight:400;font-size:clamp(40px,5vw,60px);line-height:1;font-variant-numeric:tabular-nums}
+.stat span{color:var(--muted);font-size:14px}
+@media (max-width:700px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* services */
+.svc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.svc{background:var(--paper);border-radius:var(--r);padding:28px;display:grid;gap:12px;align-content:start;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;border:1px solid var(--line)}
+.svc:hover{transform:translateY(-6px);box-shadow:0 24px 48px -28px rgba(30,40,36,.35)}
+.svc-ico{width:52px;height:52px;border-radius:14px;background:var(--linen);display:grid;place-items:center;transition:background .3s}
+.svc:hover .svc-ico{background:var(--blush)}
+.svc h3{font-size:28px}
+.svc p{color:var(--muted);font-size:15px}
+.svc small{font-size:13px;font-weight:600;color:var(--sage-deep)}
+@media (max-width:900px){.svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.svc-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* process */
+.process{background:var(--ink);color:var(--chalk);border-radius:32px;margin-inline:max(8px,env(safe-area-inset-left,0px))}
+.process .eyebrow{color:var(--oak)}
+.process .sec-head p{color:#B9C3BD}
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;counter-reset:s}
+.step{border-top:1px solid #3A4842;padding-top:20px;display:grid;gap:8px;align-content:start}
+.step i{font-style:normal;font-size:13px;color:var(--oak);font-weight:700;letter-spacing:.1em}
+.step h3{font-size:26px}
+.step p{font-size:14px;color:#B9C3BD}
+.step em{font-style:normal;font-size:12px;color:#8FA197}
+@media (max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.steps{grid-template-columns:minmax(0,1fr)}}
+
+/* estimator */
+.est{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px;align-items:stretch}
+.est-form{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:28px;display:grid;gap:24px}
+.lbl{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:block}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{padding:10px 16px;border-radius:999px;border:1.5px solid var(--line);background:transparent;cursor:pointer;font-size:14px;font-weight:500;transition:all .2s}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+input[type=range]{width:100%;accent-color:var(--sage-deep)}
+.range-row{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.est-out{background:linear-gradient(160deg,var(--blush),var(--linen));border-radius:24px;padding:28px;display:grid;gap:16px;align-content:space-between}
+.est-out .big{font-family:var(--f-display);font-size:clamp(38px,4.6vw,54px);line-height:1;font-variant-numeric:tabular-nums}
+.est-out ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:14px}
+.est-out li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed rgba(30,40,36,.18);padding-bottom:8px}
+.fine{font-size:12px;color:var(--muted)}
+@media (max-width:860px){.est{grid-template-columns:minmax(0,1fr)}}
+
+/* work */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.work{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.tile{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;max-width:100%;background:var(--linen);animation:pop .5s cubic-bezier(.2,.7,.2,1) both}
+.tile svg{width:100%;height:100%;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.tile:hover svg{transform:scale(1.06)}
+.tile-cap{position:absolute;left:12px;right:12px;bottom:12px;background:rgba(255,255,255,.9);border-radius:12px;padding:10px 14px;display:flex;justify-content:space-between;gap:10px;font-size:13px}
+.tile-cap b{font-weight:600}
+@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+@media (max-width:860px){.work{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.work{grid-template-columns:minmax(0,1fr)}.tile{aspect-ratio:4/3}}
+
+/* voices */
+.voices{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end}
+.quote{font-family:var(--f-display);font-size:clamp(28px,3.8vw,44px);line-height:1.15;max-width:28ch;animation:rise .7s both}
+.who{margin-top:18px;font-size:14px;color:var(--muted)}
+.who b{color:var(--ink)}
+.stars{color:var(--oak);letter-spacing:2px}
+
+/* faq */
+.faq{display:grid;gap:10px;max-width:820px}
+.faq details{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:4px 22px}
+.faq summary{cursor:pointer;list-style:none;padding-block:16px;font-weight:600;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:22px;line-height:1;color:var(--sage-deep);transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding-bottom:18px;color:var(--muted);max-width:65ch}
+
+/* consult */
+.consult{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px;align-items:start}
+.consult-side{display:grid;gap:18px}
+.consult-side h2{font-size:clamp(38px,5vw,60px)}
+.num{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 16px;font-variant-numeric:tabular-nums}
+.num b{font-size:18px;user-select:all}
+.copy{margin-left:auto;border:0;background:var(--linen);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;cursor:pointer}
+.cform{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:28px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.field{display:grid;gap:6px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label{font-size:13px;font-weight:600}
+.field input,.field select,.field textarea{width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--chalk);transition:border-color .2s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--sage-deep)}
+.preview{grid-column:1/-1;font-size:13px;color:var(--muted);background:var(--linen);border-radius:12px;padding:12px 14px;white-space:pre-wrap}
+@media (max-width:860px){.consult{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:520px){.cform{grid-template-columns:minmax(0,1fr)}}
+
+footer{padding-block:40px;border-top:1px solid var(--line);margin-top:40px;font-size:14px;color:var(--muted)}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+
+/* floating whatsapp */
+.fab{position:fixed;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:70;display:flex;align-items:center;gap:10px;text-decoration:none}
+.fab-bubble{background:var(--paper);border:1px solid var(--line);padding:10px 14px;border-radius:14px 14px 4px 14px;font-size:13px;box-shadow:0 12px 30px -16px rgba(30,40,36,.4);animation:rise .6s 1.2s both}
+.fab-btn{width:60px;height:60px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(31,168,85,.7);position:relative}
+.fab-btn::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--wa);animation:ping 2.2s ease-out infinite;z-index:-1}
+@keyframes ping{from{transform:scale(1);opacity:.55}to{transform:scale(1.7);opacity:0}}
+@media (max-width:560px){.fab-bubble{display:none}}
+
+/* scroll reveal: elements are visible at rest; the class only plays an entrance */
+.rv.in{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:999px;font-size:14px;z-index:80;animation:rise .3s both}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+
+<script type="text/babel" data-presets="react">
+const { useState, useEffect, useRef, useMemo } = React;
+
+/* ---------- Business settings: edit these ---------- */
+const WHATSAPP_NUMBER = "919137918782";   // 91 = India country code + 9137918782
+const WHATSAPP_DISPLAY = "+91 91379 18782";
+const DEFAULT_MESSAGE = "Hi Aangan Interiors! I'd like a free design consultation for my home. Please share the next available slot.";
+const waLink = (text = DEFAULT_MESSAGE) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+
+/* ---------- Illustrated rooms (placeholders until real photos are added) ---------- */
+const PALETTES = {
+  living:  { wall:"#E4E9E2", wall2:"#D6DED5", floor:"#D9BC98", main:"#9DB3A6", accent:"#C2925F", rug:"#EBDCD2" },
+  bedroom: { wall:"#EFE4DC", wall2:"#E6D6CB", floor:"#CFAE8A", main:"#F7F3EE", accent:"#8BA597", rug:"#DCCFC3" },
+  kitchen: { wall:"#E8ECEA", wall2:"#DCE3DF", floor:"#C9B49B", main:"#7E9A8B", accent:"#C2925F", rug:"#ECEAE3" },
+  study:   { wall:"#E9E6DD", wall2:"#DDD8CB", floor:"#B98F67", main:"#4F6B5E", accent:"#D6A877", rug:"#E4DDD0" },
+  dining:  { wall:"#F0ECE6", wall2:"#E5DED4", floor:"#D4B391", main:"#B9876A", accent:"#7E9A8B", rug:"#EAE2D8" },
+};
+
+function Room({ kind = "living", id }) {
+  const p = PALETTES[kind];
+  const g = `g-${id}`;
+  return (
+    <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label={`Illustrated ${kind} interior`}>
+      <defs>
+        <linearGradient id={`${g}-w`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor={p.wall}/><stop offset="1" stopColor={p.wall2}/></linearGradient>
+        <linearGradient id={`${g}-l`} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#FFFFFF" stopOpacity=".95"/><stop offset="1" stopColor="#DCE8EE" stopOpacity=".7"/></linearGradient>
+        <linearGradient id={`${g}-f`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor={p.floor}/><stop offset="1" stopColor="#A9845F"/></linearGradient>
+        <radialGradient id={`${g}-glow`} cx=".5" cy=".5" r=".5"><stop offset="0" stopColor="#FFF4DA" stopOpacity=".9"/><stop offset="1" stopColor="#FFF4DA" stopOpacity="0"/></radialGradient>
+      </defs>
+      <rect width="800" height="600" fill={`url(#${g}-w)`}/>
+      <rect y="440" width="800" height="160" fill={`url(#${g}-f)`}/>
+      {Array.from({length:9}).map((_,i)=><line key={i} x1={i*100} y1="440" x2={i*100-60} y2="600" stroke="#000" strokeOpacity=".05"/>)}
+      <rect y="436" width="800" height="8" fill="#FFFFFF" fillOpacity=".6"/>
+      {/* window + light spill */}
+      <rect x="520" y="70" width="200" height="260" rx="100" fill={`url(#${g}-l)`} stroke="#FFFFFF" strokeWidth="10"/>
+      <line x1="620" y1="70" x2="620" y2="330" stroke="#FFFFFF" strokeWidth="6"/>
+      <polygon points="520,330 720,330 800,600 430,600" fill="#FFFFFF" fillOpacity=".18"/>
+      {kind === "living" && <>
+        <rect x="90" y="110" width="150" height="190" fill="#FFFFFF" stroke={p.accent} strokeWidth="6"/>
+        <circle cx="165" cy="190" r="44" fill={p.main}/><rect x="125" y="230" width="80" height="40" fill={p.rug}/>
+        <ellipse cx="300" cy="545" rx="260" ry="40" fill={p.rug}/>
+        <rect x="70" y="360" width="360" height="110" rx="30" fill={p.main}/>
+        <rect x="90" y="320" width="320" height="70" rx="26" fill={p.main} opacity=".85"/>
+        <rect x="110" y="380" width="140" height="44" rx="16" fill="#FFFFFF" fillOpacity=".35"/>
+        <rect x="260" y="380" width="140" height="44" rx="16" fill="#FFFFFF" fillOpacity=".35"/>
+        <rect x="140" y="345" width="56" height="44" rx="12" fill={p.accent}/>
+        <ellipse cx="300" cy="520" rx="90" ry="18" fill={p.accent}/>
+        <rect x="294" y="520" width="12" height="30" fill={p.accent}/>
+        <path d="M470 470 L470 250 Q470 200 520 200" stroke="#2A3430" strokeWidth="5" fill="none"/>
+        <path d="M500 190 h60 l-14 40 h-32 z" fill={p.accent}/>
+        <circle cx="530" cy="240" r="70" fill={`url(#${g}-glow)`}/>
+        <rect x="690" y="400" width="54" height="70" rx="8" fill="#FFFFFF"/>
+        {[0,1,2,3,4].map(i=><ellipse key={i} cx={717+(i-2)*14} cy={360+Math.abs(i-2)*14} rx="12" ry="34" transform={`rotate(${(i-2)*18} ${717+(i-2)*14} ${390})`} fill="#5E8070"/>)}
+      </>}
+      {kind === "bedroom" && <>
+        <rect x="80" y="210" width="400" height="160" rx="24" fill={p.accent}/>
+        <rect x="60" y="360" width="440" height="110" rx="16" fill={p.main}/>
+        <rect x="60" y="410" width="440" height="60" rx="10" fill={p.rug}/>
+        <rect x="110" y="320" width="120" height="50" rx="20" fill="#FFFFFF"/>
+        <rect x="250" y="320" width="120" height="50" rx="20" fill="#FFFFFF"/>
+        <rect x="200" y="335" width="70" height="40" rx="14" fill={p.wall2}/>
+        <rect x="520" y="390" width="80" height="80" rx="10" fill="#FFFFFF"/>
+        <line x1="560" y1="0" x2="560" y2="300" stroke="#2A3430" strokeWidth="2"/>
+        <ellipse cx="560" cy="310" rx="34" ry="20" fill={p.accent}/>
+        <circle cx="560" cy="330" r="80" fill={`url(#${g}-glow)`}/>
+        <rect x="190" y="100" width="180" height="80" fill="#FFFFFF" stroke="#C2925F" strokeWidth="4"/>
+        <path d="M200 170 Q250 110 300 150 T360 130 L360 170 Z" fill="#B9C8BE"/>
+      </>}
+      {kind === "kitchen" && <>
+        <rect x="40" y="110" width="430" height="110" rx="6" fill={p.main}/>
+        {[0,1,2,3].map(i=><line key={i} x1={40+(i+1)*86} y1="110" x2={40+(i+1)*86} y2="220" stroke="#FFFFFF" strokeOpacity=".4" strokeWidth="2"/>)}
+        <rect x="40" y="250" width="430" height="16" fill="#F7F3EE"/>
+        <rect x="40" y="266" width="430" height="174" fill={p.main}/>
+        {[0,1,2,3,4].map(i=><rect key={i} x={52+i*84} y="290" width="22" height="4" rx="2" fill={p.accent}/>)}
+        <rect x="140" y="390" width="420" height="18" fill="#FBFAF7"/>
+        <rect x="150" y="408" width="400" height="80" fill={p.accent}/>
+        {[220,350,480].map(x=><g key={x}><rect x={x-14} y="470" width="28" height="70" fill="#2A3430"/><ellipse cx={x} cy="470" rx="26" ry="8" fill={p.rug}/></g>)}
+        {[250,350,450].map(x=><g key={x}><line x1={x} y1="0" x2={x} y2="300" stroke="#2A3430" strokeWidth="2"/><path d={`M${x-22} 320 Q${x} 280 ${x+22} 320 Z`} fill={p.accent}/><circle cx={x} cy="335" r="50" fill={`url(#${g}-glow)`}/></g>)}
+      </>}
+      {kind === "study" && <>
+        <rect x="60" y="90" width="300" height="340" fill={p.main}/>
+        {[0,1,2,3].map(r=><g key={r}><rect x="60" y={150+r*80} width="300" height="8" fill={p.accent}/>
+          {[0,1,2,3,4,5,6].map(b=><rect key={b} x={80+b*34+(r%2)*10} y={100+r*80+ (b%3)*6} width="22" height={50-(b%3)*6} fill={["#EBDCD2","#F7F3EE","#C2925F","#9DB3A6"][(b+r)%4]}/>)}</g>)}
+        <rect x="390" y="350" width="300" height="16" rx="4" fill={p.accent}/>
+        <rect x="400" y="366" width="12" height="104" fill="#2A3430"/><rect x="668" y="366" width="12" height="104" fill="#2A3430"/>
+        <rect x="470" y="270" width="120" height="80" rx="6" fill="#2A3430"/><rect x="478" y="278" width="104" height="64" rx="4" fill="#B9C8BE"/>
+        <rect x="480" y="400" width="90" height="80" rx="20" fill={p.rug}/>
+        <rect x="490" y="330" width="70" height="80" rx="20" fill={p.rug}/>
+        <path d="M640 350 L640 290 L670 260" stroke="#2A3430" strokeWidth="4" fill="none"/><circle cx="672" cy="258" r="12" fill={p.accent}/>
+      </>}
+      {kind === "dining" && <>
+        <rect x="120" y="120" width="260" height="170" fill="#FFFFFF" stroke={p.main} strokeWidth="5"/>
+        <circle cx="210" cy="205" r="50" fill={p.accent} opacity=".7"/><circle cx="290" cy="215" r="40" fill={p.main} opacity=".7"/>
+        <ellipse cx="320" cy="400" rx="230" ry="26" fill={p.main}/>
+        <rect x="300" y="410" width="24" height="70" fill={p.main}/>
+        <ellipse cx="312" cy="485" rx="90" ry="10" fill={p.main}/>
+        {[130,230,410,510].map(x=><g key={x}><rect x={x-24} y="320" width="48" height="70" rx="18" fill={p.rug}/><rect x={x-20} y="420" width="6" height="60" fill="#2A3430"/><rect x={x+14} y="420" width="6" height="60" fill="#2A3430"/></g>)}
+        <line x1="320" y1="0" x2="320" y2="260" stroke="#2A3430" strokeWidth="2"/>
+        <ellipse cx="320" cy="275" rx="110" ry="22" fill={p.accent}/>
+        <circle cx="320" cy="300" r="120" fill={`url(#${g}-glow)`}/>
+        <ellipse cx="260" cy="388" rx="20" ry="6" fill="#FFFFFF"/><ellipse cx="380" cy="388" rx="20" ry="6" fill="#FFFFFF"/>
+      </>}
+    </svg>
+  );
+}
+
+/* ---------- Content ---------- */
+const SLIDES = [
+  { kind:"living",  title:"Sage & Oak Living Room",   meta:"3BHK · Powai, Mumbai · 420 sq ft" },
+  { kind:"bedroom", title:"Quiet Blush Master Suite", meta:"Villa · Lonavala · 310 sq ft" },
+  { kind:"kitchen", title:"Modular Island Kitchen",   meta:"2BHK · Thane · 180 sq ft" },
+  { kind:"study",   title:"Library Work Nook",        meta:"Apartment · Bandra · 120 sq ft" },
+];
+
+const SERVICES = [
+  { t:"Full Home Interiors", d:"Concept to keys for apartments and villas. One team, one timeline, one point of contact.", s:"From ₹1,400 / sq ft", i:"home" },
+  { t:"Modular Kitchens", d:"Ergonomic layouts, soft-close hardware and finishes that survive Indian cooking.", s:"10-year hardware warranty", i:"kitchen" },
+  { t:"Wardrobes & Storage", d:"Floor-to-ceiling wardrobes, lofts and hidden storage measured to the millimetre.", s:"Delivered in 21 days", i:"box" },
+  { t:"Living & Dining", d:"TV units, crockery displays, false ceilings and lighting plans that make rooms feel bigger.", s:"Free 3D walkthrough", i:"sofa" },
+  { t:"Office & Retail", d:"Work-ready studios, clinics and boutiques planned around footfall and brand.", s:"Turnkey execution", i:"desk" },
+  { t:"Styling & Décor", d:"Already furnished? We refresh with paint, soft furnishings, art and plants.", s:"Starts at ₹45,000", i:"leaf" },
+];
+
+const STEPS = [
+  { t:"Meet",    d:"Free call or site visit. We listen to how you live.", e:"Day 1" },
+  { t:"Measure", d:"Laser site survey and a mood board built on your taste.", e:"Day 2–4" },
+  { t:"Design",  d:"2D plans, 3D renders and a fixed, itemised quote.", e:"Week 1–2" },
+  { t:"Build",   d:"Factory-made modules, our own site supervisors, weekly photo updates.", e:"Week 3–8" },
+  { t:"Handover",d:"Deep clean, snag check, and keys back to you.", e:"Day 45–60" },
+];
+
+const WORK = [
+  { kind:"living", t:"Hiranandani 3BHK", c:"Residential", v:"₹18.5 L" },
+  { kind:"kitchen", t:"Thane Parallel Kitchen", c:"Kitchens", v:"₹4.2 L" },
+  { kind:"bedroom", t:"Lonavala Villa Suite", c:"Residential", v:"₹7.8 L" },
+  { kind:"study", t:"Bandra Writer's Studio", c:"Workspaces", v:"₹3.1 L" },
+  { kind:"dining", t:"Juhu Family Dining", c:"Residential", v:"₹5.6 L" },
+  { kind:"kitchen", t:"Andheri Café Counter", c:"Workspaces", v:"₹6.9 L" },
+];
+
+const VOICES = [
+  { q:"They turned a dark, cramped 2BHK into the brightest home on our floor. The weekly photo updates meant we never had to chase anyone.", n:"Priya & Karan Mehta", p:"2BHK, Thane" },
+  { q:"The quote they gave on day ten was the amount we paid on day sixty. No surprises, no extra line items.", n:"Rohit Sabnis", p:"3BHK, Powai" },
+  { q:"Our clinic now feels calm instead of clinical. Patients actually comment on it.", n:"Dr. Ananya Rao", p:"Dental clinic, Vashi" },
+];
+
+const FAQS = [
+  { q:"Is the first consultation really free?", a:"Yes. The first call and one site visit within Mumbai, Thane and Navi Mumbai are free, with no obligation to sign." },
+  { q:"How long does a full home take?", a:"Most 2BHK and 3BHK homes are handed over in 45 to 60 days from design sign-off. Kitchens and wardrobes alone take about 3 weeks." },
+  { q:"Will the price change after I approve the design?", a:"No. You get an itemised, fixed quote with materials and brands named. The price only changes if you change the scope." },
+  { q:"Can I pay in stages?", a:"Yes. We split payments into four milestones: booking, design sign-off, production start and handover. EMI options are available." },
+  { q:"What warranty do you give?", a:"Ten years on modular furniture and hardware, and one year of free service visits for anything on site." },
+];
+
+const ROOMS = { "1BHK":450, "2BHK":750, "3BHK":1100, "Villa":2200, "Office":900 };
+const TIERS = { Essential:{rate:1400, note:"Laminates, BWR ply, reliable hardware"}, Premium:{rate:2200, note:"Acrylic & veneer, Hettich/Häfele, profile lights"}, Luxe:{rate:3600, note:"Lacquer, stone, custom joinery, smart lighting"} };
+const SCOPES = { "Kitchen + wardrobes":0.45, "Full home":1, "Full home + décor":1.2 };
+
+const inr = n => "₹" + Math.round(n).toLocaleString("en-IN");
+const lakh = n => n >= 1e7 ? `₹${(n/1e7).toFixed(2)} Cr` : `₹${(n/1e5).toFixed(1)} L`;
+
+/* ---------- Small pieces ---------- */
+function WaIcon({ size = 22, color = "#fff" }) {
+  return <svg width={size} height={size} viewBox="0 0 24 24" fill={color} aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2s.2-1.1.1-1.2-.2-.2-.5-.3Z"/></svg>;
+}
+
+function Ico({ name }) {
+  const s = { width:26, height:26, fill:"none", stroke:"var(--sage-deep)", strokeWidth:1.6, strokeLinecap:"round", strokeLinejoin:"round" };
+  const d = {
+    home:<><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></>,
+    kitchen:<><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 7h.01M12 7h.01M9 14h6"/></>,
+    box:<><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M12 3v18M9 11v2M15 11v2"/></>,
+    sofa:<><path d="M4 11V8a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v3"/><path d="M2 13a2 2 0 0 1 4 0v2h12v-2a2 2 0 0 1 4 0v5H2z"/><path d="M5 18v2M19 18v2"/></>,
+    desk:<><path d="M3 9h18M5 9v11M19 9v11M9 9v5h6V9"/><path d="M8 5h8"/></>,
+    leaf:<><path d="M5 19c8 0 14-6 14-15C10 4 5 9 5 15v4Z"/><path d="M5 19 13 11"/></>,
+  };
+  return <svg viewBox="0 0 24 24" {...s} aria-hidden="true">{d[name]}</svg>;
+}
+
+function useReveal() {
+  useEffect(() => {
+    const els = document.querySelectorAll(".rv");
+    if (!("IntersectionObserver" in window)) return;
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold:.15 });
+    els.forEach(el => { if (el.getBoundingClientRect().top > window.innerHeight) io.observe(el); });
+    return () => io.disconnect();
+  }, []);
+}
+
+function Counter({ to, suffix = "" }) {
+  const [n, setN] = useState(to);
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current; if (!el || !("IntersectionObserver" in window)) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return; io.disconnect();
+      const t0 = performance.now(), dur = 1400;
+      const tick = t => { const k = Math.min(1, (t - t0) / dur); setN(Math.round(to * (1 - Math.pow(1 - k, 3)))); if (k < 1) requestAnimationFrame(tick); };
+      setN(0); requestAnimationFrame(tick);
+    }, { threshold:.6 });
+    io.observe(el); return () => io.disconnect();
+  }, [to]);
+  return <b ref={ref}>{n.toLocaleString("en-IN")}{suffix}</b>;
+}
+
+/* ---------- Sections ---------- */
+function Nav() {
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => { const f = () => setScrolled(window.scrollY > 10); f(); window.addEventListener("scroll", f, { passive:true }); return () => window.removeEventListener("scroll", f); }, []);
+  const close = () => setOpen(false);
+  return (
+    <header className={"nav" + (scrolled ? " scrolled" : "")}>
+      <div className="wrap nav-in">
+        <a href="#top" className="logo"><span className="logo-mark" aria-hidden="true"></span>Aangan</a>
+        <nav className={"links" + (open ? " open" : "")} aria-label="Main">
+          <a href="#services" onClick={close}>Services</a>
+          <a href="#process" onClick={close}>How it works</a>
+          <a href="#estimate" onClick={close}>Cost estimate</a>
+          <a href="#work" onClick={close}>Projects</a>
+          <a href="#faq" onClick={close}>FAQ</a>
+          <a href="#consult" onClick={close}>Contact</a>
+        </nav>
+        <div style={{display:"flex",gap:10,alignItems:"center"}}>
+          <a className="btn btn-wa nav-cta" style={{padding:"10px 16px",fontSize:14}} href={waLink()} target="_blank" rel="noopener"><WaIcon size={18}/>Chat now</a>
+          <button className="menu-btn" aria-expanded={open} aria-label="Open menu" onClick={() => setOpen(o => !o)}>{open ? "Close" : "Menu"}</button>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function Slider() {
+  const [own, setOwn] = useState([]);
+  const slides = useMemo(() => [...own, ...SLIDES], [own]);
+  const [i, setI] = useState(0);
+  const [paused, setPaused] = useState(false);
+  useEffect(() => {
+    if (paused || slides.length < 2) return;
+    const t = setTimeout(() => setI(x => (x + 1) % slides.length), 5500);
+    return () => clearTimeout(t);
+  }, [i, paused, slides.length]);
+  useEffect(() => { if (i >= slides.length) setI(0); }, [slides.length]);
+  const go = d => setI(x => (x + d + slides.length) % slides.length);
+  const add = e => {
+    const files = [...(e.target.files || [])].filter(f => f.type.startsWith("image/"));
+    if (!files.length) return;
+    const added = files.map(f => ({ src:URL.createObjectURL(f), title:f.name.replace(/\.[^.]+$/, "").replace(/[-_]/g," "), meta:"Your photo", own:true }));
+    setOwn(o => [...added, ...o]); setI(0); e.target.value = "";
+  };
+  const remove = idx => setOwn(o => o.filter((_, k) => k !== idx));
+  const s = slides[i] || slides[0];
+  return (
+    <div className="rise d2" style={{minWidth:0}}>
+      <div className={"slider" + (paused ? " paused" : "")} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} aria-roledescription="carousel" aria-label="Featured interiors">
+        {slides.map((sl, k) => (
+          <div key={(sl.src || sl.kind) + k} className={"slide" + (k === i ? " on" : "")} aria-hidden={k !== i}>
+            {sl.src ? <img src={sl.src} alt={sl.title}/> : <Room kind={sl.kind} id={"s" + k}/>}
+          </div>
+        ))}
+        <div className="dots">{slides.map((_, k) => <button key={k} className={"dot" + (k === i ? " on" : "")} aria-label={`Show slide ${k + 1}`} onClick={() => setI(k)}></button>)}</div>
+        {s.own && <button className="remove" onClick={() => remove(i)}>Remove photo</button>}
+        <div className="cap">
+          <div className="cap-card" key={i}><b className="rise">{s.title}</b><span>{s.meta}</span></div>
+          <div className="ctrls">
+            <button className="round" aria-label="Previous slide" onClick={() => go(-1)}>←</button>
+            <button className="round" aria-label="Next slide" onClick={() => go(1)}>→</button>
+          </div>
+        </div>
+      </div>
+      <div className="add-row">
+        <label className="add-btn" htmlFor="slide-upload">＋ Add your room photos
+          <input id="slide-upload" type="file" accept="image/*" multiple onChange={add}/>
+        </label>
+        <span>Illustrations shown until your project photos are added.</span>
+      </div>
+    </div>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="hero" id="top">
+      <div className="wrap hero-grid">
+        <div className="hero-copy">
+          <span className="eyebrow rise">Interior design studio · Mumbai</span>
+          <h1 className="rise d1">Homes that feel like <em>a deep breath.</em></h1>
+          <p className="rise d2">We design and build calm, practical interiors for city homes. Fixed quotes, factory-finished furniture and handover in 45 days.</p>
+          <div className="hero-actions rise d3">
+            <a className="btn btn-wa" href={waLink()} target="_blank" rel="noopener"><WaIcon/>Talk to a designer</a>
+            <a className="btn btn-ghost" href="#estimate">Estimate my cost</a>
+          </div>
+          <div className="chips rise d4">
+            <span className="chip">✓ Free site visit</span>
+            <span className="chip">✓ 10-year warranty</span>
+            <span className="chip">✓ No hidden costs</span>
+          </div>
+        </div>
+        <Slider/>
+      </div>
+    </section>
+  );
+}
+
+function Marquee() {
+  const words = ["Teak veneer","Kota stone","Fluted glass","Cane weave","Terrazzo","Linen drapes","Brass inlay","Lime plaster","Oak flooring","Jaali screens"];
+  return <div className="marquee" aria-hidden="true"><div className="mq-track">{[...words, ...words].map((w, k) => <span key={k}>{w}</span>)}</div></div>;
+}
+
+function Stats() {
+  return (
+    <div className="wrap stats">
+      <div className="stat rv"><Counter to={640} suffix="+"/><span>homes handed over</span></div>
+      <div className="stat rv"><Counter to={45}/><span>days average delivery</span></div>
+      <div className="stat rv"><Counter to={12}/><span>years in Mumbai</span></div>
+      <div className="stat rv"><b>4.9<span style={{fontSize:"0.5em"}}>/5</span></b><span>from 380+ Google reviews</span></div>
+    </div>
+  );
+}
+
+function Services() {
+  return (
+    <section className="section" id="services">
+      <div className="wrap">
+        <div className="sec-head rv"><span className="eyebrow">What we do</span><h2>Every room, one trusted team.</h2><p>Pick a single room or hand us the whole home. Each service comes with a dedicated designer and a site supervisor.</p></div>
+        <div className="svc-grid">
+          {SERVICES.map(s => (
+            <article key={s.t} className="svc rv">
+              <div className="svc-ico"><Ico name={s.i}/></div>
+              <h3>{s.t}</h3><p>{s.d}</p><small>{s.s}</small>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Process() {
+  return (
+    <section className="section process" id="process">
+      <div className="wrap">
+        <div className="sec-head rv"><span className="eyebrow">How it works</span><h2>Five steps from first chat to keys.</h2><p>You always know what happens next and when. Most homes move through these stages in under two months.</p></div>
+        <div className="steps">
+          {STEPS.map((s, k) => <div key={s.t} className="step rv"><i>Step {k + 1}</i><h3>{s.t}</h3><p>{s.d}</p><em>{s.e}</em></div>)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Estimator() {
+  const [room, setRoom] = useState("2BHK");
+  const [tier, setTier] = useState("Premium");
+  const [scope, setScope] = useState("Full home");
+  const [area, setArea] = useState(ROOMS["2BHK"]);
+  useEffect(() => setArea(ROOMS[room]), [room]);
+  const base = area * TIERS[tier].rate * SCOPES[scope];
+  const lo = base * 0.9, hi = base * 1.12;
+  const msg = `Hi Aangan Interiors! I used your cost estimator.\nHome: ${room}, ${area} sq ft\nScope: ${scope}\nFinish: ${tier}\nEstimate: ${lakh(lo)} – ${lakh(hi)}\nCan we discuss a detailed quote?`;
+  return (
+    <section className="section" id="estimate">
+      <div className="wrap">
+        <div className="sec-head rv"><span className="eyebrow">Plan your budget</span><h2>What will my interiors cost?</h2><p>Move the options to see an indicative range. Send it to a designer on WhatsApp for an exact, itemised quote.</p></div>
+        <div className="est rv">
+          <div className="est-form">
+            <div><span className="lbl">Home type</span><div className="seg">{Object.keys(ROOMS).map(r => <button key={r} aria-pressed={room === r} onClick={() => setRoom(r)}>{r}</button>)}</div></div>
+            <div><label className="lbl" htmlFor="area">Carpet area</label>
+              <input id="area" type="range" min="200" max="4000" step="25" value={area} onChange={e => setArea(+e.target.value)}/>
+              <div className="range-row"><span>200 sq ft</span><b style={{color:"var(--ink)"}}>{area.toLocaleString("en-IN")} sq ft</b><span>4,000 sq ft</span></div>
+            </div>
+            <div><span className="lbl">Scope</span><div className="seg">{Object.keys(SCOPES).map(s => <button key={s} aria-pressed={scope === s} onClick={() => setScope(s)}>{s}</button>)}</div></div>
+            <div><span className="lbl">Finish level</span><div className="seg">{Object.keys(TIERS).map(t => <button key={t} aria-pressed={tier === t} onClick={() => setTier(t)}>{t}</button>)}</div>
+              <p className="fine" style={{marginTop:8}}>{TIERS[tier].note}</p></div>
+          </div>
+          <div className="est-out">
+            <div><span className="eyebrow">Indicative range</span><div className="big" key={lo}>{lakh(lo)} – {lakh(hi)}</div></div>
+            <ul>
+              <li><span>Rate</span><b>{inr(TIERS[tier].rate)} / sq ft</b></li>
+              <li><span>Area × scope</span><b>{Math.round(area * SCOPES[scope]).toLocaleString("en-IN")} sq ft</b></li>
+              <li><span>Design fee</span><b>Included</b></li>
+              <li><span>Timeline</span><b>{scope === "Kitchen + wardrobes" ? "21–30 days" : area > 1500 ? "60–75 days" : "45–60 days"}</b></li>
+            </ul>
+            <a className="btn btn-wa" href={waLink(msg)} target="_blank" rel="noopener"><WaIcon/>Send this estimate on WhatsApp</a>
+            <p className="fine">Indicative only. Civil work, appliances and GST are quoted separately after a site visit.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Work() {
+  const cats = ["All", "Residential", "Kitchens", "Workspaces"];
+  const [c, setC] = useState("All");
+  const list = WORK.filter(w => c === "All" || w.c === c);
+  return (
+    <section className="section" id="work" style={{paddingTop:0}}>
+      <div className="wrap">
+        <div className="sec-head rv"><span className="eyebrow">Recent projects</span><h2>Spaces we've finished lately.</h2></div>
+        <div className="filters seg">{cats.map(x => <button key={x} aria-pressed={c === x} onClick={() => setC(x)}>{x}</button>)}</div>
+        <div className="work">
+          {list.map((w, k) => (
+            <figure key={c + w.t} className="tile" style={{margin:0, animationDelay:`${k * 70}ms`}}>
+              <Room kind={w.kind} id={"w" + k + c}/>
+              <figcaption className="tile-cap"><b>{w.t}</b><span>{w.v}</span></figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Voices() {
+  const [i, setI] = useState(0);
+  useEffect(() => { const t = setTimeout(() => setI(x => (x + 1) % VOICES.length), 7000); return () => clearTimeout(t); }, [i]);
+  const v = VOICES[i];
+  return (
+    <section className="section" style={{background:"var(--paper)", borderBlock:"1px solid var(--line)"}}>
+      <div className="wrap voices">
+        <div style={{minWidth:0}}>
+          <span className="eyebrow">Client stories</span>
+          <p className="stars" style={{marginTop:14}} aria-label="5 out of 5 stars">★★★★★</p>
+          <blockquote className="quote" key={i} style={{margin:"10px 0 0"}}>“{v.q}”</blockquote>
+          <p className="who"><b>{v.n}</b> · {v.p}</p>
+        </div>
+        <div className="ctrls">
+          <button className="round" style={{background:"var(--linen)"}} aria-label="Previous story" onClick={() => setI((i + VOICES.length - 1) % VOICES.length)}>←</button>
+          <button className="round" style={{background:"var(--linen)"}} aria-label="Next story" onClick={() => setI((i + 1) % VOICES.length)}>→</button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Faq() {
+  return (
+    <section className="section" id="faq">
+      <div className="wrap">
+        <div className="sec-head rv"><span className="eyebrow">Good to know</span><h2>Questions clients ask us first.</h2></div>
+        <div className="faq">{FAQS.map((f, k) => <details key={k} className="rv" open={k === 0}><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
+      </div>
+    </section>
+  );
+}
+
+function Consult({ toast }) {
+  const [f, setF] = useState({ name:"", area:"", space:"2BHK apartment", budget:"₹10–20 lakh", when:"Within 3 months", note:"" });
+  const up = k => e => setF({ ...f, [k]:e.target.value });
+  const msg = `Hi Aangan Interiors! I'd like a free design consultation.\n` +
+    (f.name ? `Name: ${f.name}\n` : "") + (f.area ? `Location: ${f.area}\n` : "") +
+    `Space: ${f.space}\nBudget: ${f.budget}\nStart: ${f.when}` + (f.note ? `\nNotes: ${f.note}` : "");
+  const copy = () => {
+    try { navigator.clipboard.writeText(WHATSAPP_DISPLAY).then(() => toast("Number copied"), () => toast("Select the number to copy it")); }
+    catch { toast("Select the number to copy it"); }
+  };
+  return (
+    <section className="section" id="consult">
+      <div className="wrap consult">
+        <div className="consult-side rv">
+          <span className="eyebrow">Free consultation</span>
+          <h2>Tell us about your space.</h2>
+          <p style={{color:"var(--muted)"}}>Fill in what you know. We'll open WhatsApp with your details already typed, so a designer can reply with ideas and a visit slot, usually within 30 minutes.</p>
+          <div className="num"><WaIcon color="var(--wa)"/><b>{WHATSAPP_DISPLAY}</b><button className="copy" onClick={copy}>Copy</button></div>
+          <p className="fine">Mon–Sat, 10 am – 8 pm · Studio: Hiranandani Gardens, Powai</p>
+        </div>
+        <form className="cform rv" onSubmit={e => e.preventDefault()}>
+          <div className="field"><label htmlFor="c-name">Your name</label><input id="c-name" value={f.name} onChange={up("name")} placeholder="e.g. Neha Sharma"/></div>
+          <div className="field"><label htmlFor="c-area">Locality</label><input id="c-area" value={f.area} onChange={up("area")} placeholder="e.g. Powai, Mumbai"/></div>
+          <div className="field"><label htmlFor="c-space">Space</label><select id="c-space" value={f.space} onChange={up("space")}>{["1BHK apartment","2BHK apartment","3BHK apartment","Villa / bungalow","Kitchen only","Office / retail"].map(o => <option key={o}>{o}</option>)}</select></div>
+          <div className="field"><label htmlFor="c-budget">Budget</label><select id="c-budget" value={f.budget} onChange={up("budget")}>{["Under ₹5 lakh","₹5–10 lakh","₹10–20 lakh","₹20–40 lakh","₹40 lakh+","Not sure yet"].map(o => <option key={o}>{o}</option>)}</select></div>
+          <div className="field full"><label htmlFor="c-when">When do you want to start?</label><select id="c-when" value={f.when} onChange={up("when")}>{["Right away","Within 3 months","3–6 months","Just exploring"].map(o => <option key={o}>{o}</option>)}</select></div>
+          <div className="field full"><label htmlFor="c-note">Anything else?</label><textarea id="c-note" rows="3" value={f.note} onChange={up("note")} placeholder="Possession date, style you like, rooms to focus on…"></textarea></div>
+          <div className="preview" aria-live="polite"><b style={{color:"var(--ink)"}}>Your WhatsApp message</b>{"\n"}{msg}</div>
+          <a className="btn btn-wa" style={{gridColumn:"1/-1", justifyContent:"center"}} href={waLink(msg)} target="_blank" rel="noopener"><WaIcon/>Send on WhatsApp</a>
+        </form>
+      </div>
+    </section>
+  );
+}
+
+function App() {
+  const [msg, setMsg] = useState("");
+  const toast = m => { setMsg(m); setTimeout(() => setMsg(""), 2200); };
+  useReveal();
+  return (
+    <>
+      <Nav/>
+      <main>
+        <Hero/>
+        <Marquee/>
+        <Stats/>
+        <Services/>
+        <Process/>
+        <Estimator/>
+        <Work/>
+        <Voices/>
+        <Faq/>
+        <Consult toast={toast}/>
+      </main>
+      <footer><div className="wrap foot">
+        <span><b style={{color:"var(--ink)", fontFamily:"var(--f-display)", fontSize:22, fontWeight:400}}>Aangan Interiors</b> · Design · Build · Style</span>
+        <span>WhatsApp {WHATSAPP_DISPLAY} · © 2026</span>
+      </div></footer>
+      <a className="fab" href={waLink()} target="_blank" rel="noopener" aria-label="Chat with a design consultant on WhatsApp">
+        <span className="fab-bubble">Hi! Need help with your home? 👋</span>
+        <span className="fab-btn"><WaIcon size={30}/></span>
+      </a>
+      {msg && <div className="toast" role="status">{msg}</div>}
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>
